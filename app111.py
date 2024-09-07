@@ -2,7 +2,7 @@ import numpy as np
 import streamlit as st
 from joblib import load
 from sklearn.preprocessing import StandardScaler
-
+from setuptools import setup
 import subprocess
 import sys
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'joblib'])
