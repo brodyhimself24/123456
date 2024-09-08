@@ -12,14 +12,14 @@ def main():
     st.title('健康指标预测')
 
     # 创建文本输入框供用户输入特征数据
-    weight = st.number_input("请输入体重 (kg)", min_value=0, max_value=150, value=65)
-    height = st.number_input("请输入身高 (cm)", min_value=0, max_value=250, value=175)
-    age = st.number_input("请输入年龄", min_value=0, max_value=120, value=25)
-    ra = st.number_input("请输入RA值", min_value=0, max_value=500, value=100)
-    la = st.number_input("请输入LA值", min_value=0, max_value=500, value=100)
-    tr = st.number_input("请输入TR值", min_value=0, max_value=500, value=50)
-    rl = st.number_input("请输入RL值", min_value=0, max_value=500, value=120)
-    ll = st.number_input("请输入LL值", min_value=0, max_value=500, value=120)
+    weight = st.number_input("请输入体重 (kg)", min_value=0, max_value=500, value=0)
+    height = st.number_input("请输入身高 (cm)", min_value=0, max_value=250, value=0)
+    age = st.number_input("请输入年龄", min_value=0, max_value=120, value=0)
+    ra = st.number_input("请输入RA值", min_value=0, max_value=600, value=0)
+    la = st.number_input("请输入LA值", min_value=0, max_value=600, value=0)
+    tr = st.number_input("请输入TR值", min_value=0, max_value=600, value=0)
+    rl = st.number_input("请输入RL值", min_value=0, max_value=600, value=0)
+    ll = st.number_input("请输入LL值", min_value=0, max_value=600, value=0)
 
     # 构建特征数组
     features = np.array([weight, height, age, ra, la, tr, rl, ll]).reshape(1, -1)
