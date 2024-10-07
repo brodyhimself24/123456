@@ -31,8 +31,8 @@ def main():
     # 用户点击预测按钮
     if st.button('进行预测'):
         # 加载模型、标准化器和多项式特征生成器
-        model = load('heu11.joblib')  # 确保这是正确的文件名
-        scaler_X = load('scaler_X11.joblib')  # 确保这是正确的文件名
+        model = load('heu12.joblib')  # 确保这是正确的文件名
+        scaler_X = load('scaler_X12.joblib')  # 确保这是正确的文件名
         poly = load('poly1.joblib')  # 加载多项式特征生成器
 
         # 构建特征数组
