@@ -51,8 +51,15 @@ def main():
         # 使用加载的 StandardScaler 实例进行特征标准化
         features_scaled = scaler_X.transform(features)
 
+        # 输出标准化后的特征的形状以进行验证
+        st.write(f"标准化后的特征的形状: {features_scaled.shape}")
+
         # 使用模型进行预测
-        prediction = model.predict(features_scaled)
+        try:
+            prediction = model.predict(features_scaled)
+        except ValueError as e:
+            st.error(f"预测时发生错误：{str(e)}")
+            return
 
         # 输出预测结果的形状以进行验证
         st.write(f"预测结果的形状: {prediction.shape}")
