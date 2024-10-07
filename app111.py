@@ -90,7 +90,7 @@ def main():
         # 定义每个标签的单位
         units = [
             '%', 'kg', 'kg', '%', 'kg', 'kg', '',  # 内脏脂肪没有单位
-            '', '', '', '', '', '', 'kg', ''      # 腰臀比没有单位
+            '', 'kg', 'kg', 'kg', 'kg', 'kg', 'kg', ''      # 腰臀比没有单位
         ]
 
         for i, (label, unit) in enumerate(zip(labels_with_units, units + ['kg', ''])):
