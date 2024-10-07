@@ -1,12 +1,7 @@
 import numpy as np
-import pandas as pd
 import streamlit as st
 from joblib import load
-from sklearn.linear_model import Ridge
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, mean_squared_log_error
-
 # 设置matplotlib字体，以便支持中文和负号
 plt.rcParams['font.sans-serif'] = 'SimHei'
 plt.rcParams['axes.unicode_minus'] = False
