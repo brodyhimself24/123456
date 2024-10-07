@@ -11,24 +11,24 @@ def main():
     st.title('健康指标预测')
 
     # 创建文本输入框供用户输入特征数据
-    weight = st.number_input("请输入体重 (kg)", min_value=0, max_value=150, value=65)
-    height = st.number_input("请输入身高 (cm)", min_value=0, max_value=250, value=175)
+    weight = st.number_input("请输入体重 (kg)", min_value=0.0, max_value=150.0, value=65.0, step=0.1, format="%.1f")
+    height = st.number_input("请输入身高 (cm)", min_value=0.0, max_value=250.0, value=175.0, step=0.1, format="%.1f")
     age = st.number_input("请输入年龄", min_value=0, max_value=120, value=25)
-    ra5 = st.number_input("请输入5Hz的RA值", min_value=0, max_value=500, value=100)
-    la5 = st.number_input("请输入5Hz的LA值", min_value=0, max_value=500, value=100)
-    tr5 = st.number_input("请输入5Hz的TR值", min_value=0, max_value=500, value=50)
-    rl5 = st.number_input("请输入5Hz的RL值", min_value=0, max_value=500, value=120)
-    ll5 = st.number_input("请输入5Hz的LL值", min_value=0, max_value=500, value=120)
-    ra50 = st.number_input("请输入50Hz的RA值", min_value=0, max_value=500, value=100)
-    la50 = st.number_input("请输入50Hz的LA值", min_value=0, max_value=500, value=100)
-    tr50 = st.number_input("请输入50Hz的TR值", min_value=0, max_value=500, value=50)
-    rl50 = st.number_input("请输入50Hz的RL值", min_value=0, max_value=500, value=120)
-    ll50 = st.number_input("请输入50Hz的LL值", min_value=0, max_value=500, value=120)
-    ra250 = st.number_input("请输入250Hz的RA值", min_value=0, max_value=500, value=100)
-    la250 = st.number_input("请输入250Hz的LA值", min_value=0, max_value=500, value=100)
-    tr250 = st.number_input("请输入250Hz的TR值", min_value=0, max_value=500, value=50)
-    rl250 = st.number_input("请输入250Hz的RL值", min_value=0, max_value=500, value=120)
-    ll250 = st.number_input("请输入250Hz的LL值", min_value=0, max_value=500, value=120)
+    ra5 = st.number_input("请输入5Hz的RA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    la5 = st.number_input("请输入5Hz的LA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    tr5 = st.number_input("请输入5Hz的TR值", min_value=0.0, max_value=500.0, value=50.0, step=0.1, format="%.1f")
+    rl5 = st.number_input("请输入5Hz的RL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
+    ll5 = st.number_input("请输入5Hz的LL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
+    ra50 = st.number_input("请输入50Hz的RA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    la50 = st.number_input("请输入50Hz的LA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    tr50 = st.number_input("请输入50Hz的TR值", min_value=0.0, max_value=500.0, value=50.0, step=0.1, format="%.1f")
+    rl50 = st.number_input("请输入50Hz的RL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
+    ll50 = st.number_input("请输入50Hz的LL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
+    ra250 = st.number_input("请输入250Hz的RA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    la250 = st.number_input("请输入250Hz的LA值", min_value=0.0, max_value=500.0, value=100.0, step=0.1, format="%.1f")
+    tr250 = st.number_input("请输入250Hz的TR值", min_value=0.0, max_value=500.0, value=50.0, step=0.1, format="%.1f")
+    rl250 = st.number_input("请输入250Hz的RL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
+    ll250 = st.number_input("请输入250Hz的LL值", min_value=0.0, max_value=500.0, value=120.0, step=0.1, format="%.1f")
 
     # 用户点击预测按钮
     if st.button('进行预测'):
@@ -78,14 +78,27 @@ def main():
         water_percentage = prediction[0, 3]  # 获取水分率百分比
         water_content = weight * (water_percentage / 100)  # 计算水分含量
         
-        # 添加 "水分含量" 标签
-        labels_with_water = labels + ['水分含量']
+        # 计算 BMI
+        bmi = weight / ((height / 100) ** 2)  # 身高单位为 cm，转换为 m
+        
+        # 添加 "水分含量" 和 "BMI" 标签
+        labels_with_units = labels + ['水分含量', 'BMI']
 
-        # 将水分含量添加到预测结果中
-        predictions_with_water = np.hstack((prediction[0], [water_content]))
+        # 将水分含量和 BMI 添加到预测结果中
+        predictions_with_water_and_bmi = np.hstack((prediction[0], [water_content, bmi]))
 
-        for i, label in enumerate(labels_with_water):
-            st.write(f"{label}: {predictions_with_water[i]:.2f}")
+        # 定义每个标签的单位
+        units = [
+            '%', 'kg', 'kg', '%', 'kg', 'kg', '',  # 内脏脂肪没有单位
+            '', '', '', '', '', '', 'kg', ''      # 腰臀比没有单位
+        ]
+
+        for i, (label, unit) in enumerate(zip(labels_with_units, units + ['kg', ''])):
+            # 根据标签添加单位
+            if unit:
+                st.write(f"{label}: {predictions_with_water_and_bmi[i]:.2f} {unit}")
+            else:
+                st.write(f"{label}: {predictions_with_water_and_bmi[i]:.2f}")
 
 if __name__ == "__main__":
     main()
