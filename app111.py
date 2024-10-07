@@ -37,8 +37,8 @@ def main():
     # 用户点击预测按钮
     if st.button('进行预测'):
         # 加载模型和标准化器
-        model = load('E:\机器学习源文件\项目6\heu.joblib')
-        scaler_X = load('E:\机器学习源文件\项目6\scaler_X.joblib')
+        model = load('E:\机器学习源文件\项目6\heu11.joblib')
+        scaler_X = load('E:\机器学习源文件\项目6\scaler_X11.joblib')
 
         # 使用加载的 StandardScaler 实例进行特征标准化
         features_scaled = scaler_X.transform(features)
