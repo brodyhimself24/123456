@@ -130,7 +130,7 @@ def main():
         col_result1, col_result2, col_result3 = st.columns([1, 1, 1])
 
         # 显示预测结果
-        st.markdown('<p class="result-label">预测结果如下：</p>', unsafe_allow_html=True)
+        st.markdown('<p class="result-label">预测结果如上所示</p>', unsafe_allow_html=True)
         for i, (label, unit) in enumerate(zip(labels_with_units, units + ['kg', ''])):
             # 根据标签添加单位
             if unit:
