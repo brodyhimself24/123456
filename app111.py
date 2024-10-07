@@ -2,10 +2,6 @@ import numpy as np
 import streamlit as st
 from joblib import load
 from sklearn.preprocessing import StandardScaler
-from setuptools import setup
-import subprocess
-import sys
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'joblib'])
 
 # Streamlit界面
 def main():
@@ -32,11 +28,12 @@ def main():
     ll250 = st.number_input("请输入250Hz的LL值", min_value=0, max_value=500, value=120)
 
     # 构建特征数组
-    features = np.array([weight, height, age, ra5, la5, tr5, rl5, ll5, ra50, la50, tr50, rl50, ll50, ra250, la250, tr250, rl250, ll250]).reshape(1, -1)
-    
+    features = np.array([[weight, height, age, ra5, la5, tr5, rl5, ll5, ra50, la50, tr50, rl50, ll50, ra250, la250, tr250, rl250, ll250]])
+
     # 用户点击预测按钮
     if st.button('进行预测'):
         # 加载模型和标准化器
+        # 确保这些文件已经上传到 Streamlit Cloud，并使用正确的相对路径
         model = load('heu11.joblib')
         scaler_X = load('scaler_X11.joblib')
 
