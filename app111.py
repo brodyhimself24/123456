@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 
 # Streamlit界面
 def main():
-    st.title('健康指标预测')
+    st.title('八极称人体健康指标大模型')
 
     # 创建文本输入框供用户输入特征数据
     weight = st.number_input("请输入体重 (kg)", min_value=0.0, max_value=150.0, value=65.0, step=0.1, format="%.1f")
