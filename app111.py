@@ -12,23 +12,33 @@ def main():
     st.title('健康指标预测')
 
     # 创建文本输入框供用户输入特征数据
-    weight = st.number_input("请输入体重 (kg)", min_value=0, max_value=500, value=0)
-    height = st.number_input("请输入身高 (cm)", min_value=0, max_value=250, value=0)
-    age = st.number_input("请输入年龄", min_value=0, max_value=120, value=0)
-    ra = st.number_input("请输入RA值", min_value=0, max_value=600, value=0)
-    la = st.number_input("请输入LA值", min_value=0, max_value=600, value=0)
-    tr = st.number_input("请输入TR值", min_value=0, max_value=600, value=0)
-    rl = st.number_input("请输入RL值", min_value=0, max_value=600, value=0)
-    ll = st.number_input("请输入LL100值", min_value=0, max_value=600, value=0)
+    weight = st.number_input("请输入体重 (kg)", min_value=0, max_value=150, value=65)
+    height = st.number_input("请输入身高 (cm)", min_value=0, max_value=250, value=175)
+    age = st.number_input("请输入年龄", min_value=0, max_value=120, value=25)
+    ra5 = st.number_input("请输入5Hz的RA值", min_value=0, max_value=500, value=100)
+    la5 = st.number_input("请输入5Hz的LA值", min_value=0, max_value=500, value=100)
+    tr5 = st.number_input("请输入5Hz的TR值", min_value=0, max_value=500, value=50)
+    rl5 = st.number_input("请输入5Hz的RL值", min_value=0, max_value=500, value=120)
+    ll5 = st.number_input("请输入5Hz的LL值", min_value=0, max_value=500, value=120)
+    ra50 = st.number_input("请输入50Hz的RA值", min_value=0, max_value=500, value=100)
+    la50 = st.number_input("请输入50Hz的LA值", min_value=0, max_value=500, value=100)
+    tr50 = st.number_input("请输入50Hz的TR值", min_value=0, max_value=500, value=50)
+    rl50 = st.number_input("请输入50Hz的RL值", min_value=0, max_value=500, value=120)
+    ll50 = st.number_input("请输入50Hz的LL值", min_value=0, max_value=500, value=120)
+    ra250 = st.number_input("请输入250Hz的RA值", min_value=0, max_value=500, value=100)
+    la250 = st.number_input("请输入250Hz的LA值", min_value=0, max_value=500, value=100)
+    tr250 = st.number_input("请输入250Hz的TR值", min_value=0, max_value=500, value=50)
+    rl250 = st.number_input("请输入250Hz的RL值", min_value=0, max_value=500, value=120)
+    ll250 = st.number_input("请输入250Hz的LL值", min_value=0, max_value=500, value=120)
 
     # 构建特征数组
-    features = np.array([weight, height, age, ra, la, tr, rl, ll]).reshape(1, -1)
+    features = np.array([weight, height, age, ra5, la5, tr5, rl5, ll5, ra50, la50, tr50, rl50, ll50, ra250, la250, tr250, rl250, ll250]).reshape(1, -1)
     
     # 用户点击预测按钮
     if st.button('进行预测'):
         # 加载模型和标准化器
-        model = load('heu.joblib')
-        scaler_X = load('scaler_X.joblib')
+        model = load('E:\机器学习源文件\项目6\heu.joblib')
+        scaler_X = load('E:\机器学习源文件\项目6\scaler_X.joblib')
 
         # 使用加载的 StandardScaler 实例进行特征标准化
         features_scaled = scaler_X.transform(features)
