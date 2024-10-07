@@ -73,9 +73,9 @@ def main():
             '体脂率', '肌肉', '骨骼肌', '水分率百分比', '蛋白质', '无机盐', '内脏脂肪', 
             '基础代谢', '节段肌肉左臂', '节段肌肉右臂', '节段肌肉躯干', '节段肌肉左腿', '节段肌肉右腿', '骨盐量', '腰臀比'
         ]
-        if len(prediction) > 0:
-            # 假设模型是一个单任务回归模型，只输出一个预测值
-            st.write(f"预测值: {prediction[0]:.2f}")
+        if prediction.size > 0:
+            for i, label in enumerate(labels):
+                st.write(f"{label}: {prediction[0, i]:.2f}")
         else:
             st.write("预测结果为空，请检查模型和输入数据。")
 
