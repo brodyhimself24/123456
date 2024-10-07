@@ -42,7 +42,7 @@ def main():
     # 用户点击预测按钮
     if st.button('进行预测'):
         # 加载模型和标准化器
-        model = load('model12.joblib')  # 确保这是正确的文件名
+        model = load('heu12.joblib')  # 确保这是正确的文件名
         scaler_X = load('scaler_X12.joblib')  # 确保这是正确的文件名
 
         # 使用加载的 StandardScaler 实例进行特征标准化
