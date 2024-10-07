@@ -54,6 +54,9 @@ def main():
         # 输出标准化后的特征的形状以进行验证
         st.write(f"标准化后的特征的形状: {features_scaled.shape}")
 
+        # 输出模型系数的形状以进行验证
+        st.write(f"模型系数的形状: {model.coef_.shape}")
+
         # 使用模型进行预测
         try:
             prediction = model.predict(features_scaled)
